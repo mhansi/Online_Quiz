@@ -237,11 +237,11 @@ if (isset($_GET['submit']))
   
   $req_fields = array('submit1','submit2','submit3','submit4','submit5');
   foreach($req_fields as $field){
-    if(isset($_GET[$field])){
+    if(!isset($_GET[$field])){
       $errors[]=$field.' is required';
     }
   }
-//if(empty($errors)){
+if(empty($errors)){
   $option1 = $_GET['submit1'] ;
   $option1 = explode ("-",$option1);
 
@@ -309,7 +309,9 @@ if (isset($_GET['submit']))
 
 
 echo '<meta http-equiv=Refresh content="0;url=quiz.php?reload=1">';
- //}
+ }else{
+  echo'<div class="info bg-danger text-light">Please Fill All Answers</div>';
+ }
 }
 ?>
 
